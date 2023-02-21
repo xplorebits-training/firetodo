@@ -1,5 +1,7 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './App.vue'
+import './index.css'
 
 import { initializeApp } from 'firebase/app';
 
@@ -21,4 +23,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-createApp(App).mount('#app')
+createApp(App).use(createPinia()).mount('#app')
