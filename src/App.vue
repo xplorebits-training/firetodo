@@ -38,7 +38,7 @@
             New password
           </label>
           <div class="mt-1">
-            <input v-model="newPassword" name="newPassword" type="password" required="" class="block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none"/>
+            <input v-model="newPassword" name="newPassword" type="password" required="" minlength="6" class="block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none"/>
           </div>
         </div>
         <div class="col-span-12 md:col-span-6">
@@ -46,7 +46,7 @@
             Retype new password
           </label>
           <div class="mt-1">
-            <input v-model="retypeNewPassword" name="retypeNewPassword" type="password" required="" class="block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none"/>
+            <input v-model="retypeNewPassword" name="retypeNewPassword" type="password" required="" minlength="6" class="block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none"/>
           </div>
         </div>
       </div>
@@ -66,16 +66,23 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useUser } from '../stores/user'
 
 const firstName = ref("");
 const lastName = ref("");
 const email = ref();
-const newPassword = ref();
-const retypeNewPassword = ref();
+const newPassword = ref("");
+const retypeNewPassword = ref("");
+
 
 const onSubmit = function () {
-  if (values.newPassword !== values.retypeNewPassword) {
-    
+
+  if (newPassword.value !== retypeNewPassword.value) {
+    alert( newPassword , retypeNewPassword ,"passwords do not match.");
+    return;
   }
+  useUser().signup()
+  .then(() => alert("Sign up successful!"))
+  .catch((error) => console.log(error.code))
 }
 </script>
