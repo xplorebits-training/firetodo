@@ -81,7 +81,7 @@ const onSubmit = function () {
     alert( newPassword , retypeNewPassword ,"passwords do not match.");
     return;
   }
-  useUser().signup()
+  useUser().signup(email.value , newPassword.value )
   .then(() => alert("Sign up successful!"))
   .catch((error) => alert(error.code))
 }
