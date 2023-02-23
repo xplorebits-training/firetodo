@@ -78,10 +78,10 @@ const retypeNewPassword = ref("");
 const onSubmit = function () {
 
   if (newPassword.value !== retypeNewPassword.value) {
-    alert( newPassword , retypeNewPassword ,"passwords do not match.");
+    alert("passwords do not match.");
     return;
   }
-  useUser().signup(email.value , newPassword.value )
+  useUser().signup(firstName.value , lastName.value , email.value , newPassword.value )
   .then(() => alert("Sign up successful!"))
   .catch((error) => alert(error.code))
 }
