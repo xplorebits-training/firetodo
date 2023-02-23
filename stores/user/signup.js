@@ -5,9 +5,10 @@ import { useUser } from "../user";
 export default async function(firstName,lastName,useremail,userpassword){
   await createUserWithEmailAndPassword(getAuth(), useremail, userpassword);
   await useUser().updateLocalProfile(firstName,lastName,useremail);
-  await setDoc(doc(getFirestore(app), "users", getAuth().currentUser.uid), {
+  await setDoc(doc(getFirestore(), "users", getAuth().currentUser.uid), {
     firstName,
     lastName,
     email : useremail
   });
+  console.log("done")
 };
