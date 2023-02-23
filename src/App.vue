@@ -83,6 +83,6 @@ const onSubmit = function () {
   }
   useUser().signup(firstName.value , lastName.value , email.value , newPassword.value )
   .then(() => alert("Sign up successful!"))
-  .catch((error) => alert(error.code))
+  .catch((error) => alert(error))
 }
 </script>

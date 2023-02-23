@@ -1,12 +1,15 @@
-import { ref } from "vue";
 import { defineStore } from "pinia";
 import signup from "./user/signup";
 
 export const useUser = defineStore('User',{
-  state:() => {
-    const profile = ref({});
-  },
+  state:() => ({
+    profile : {},
+  }),
   actions:{
-    signup
+    signup,
+    updateLocalProfile (firstName,lastName,useremail){
+      useUser.profile = { ...this.profile , firstName : firstName , lastName : lastName , email : useremail}
+    },
+   }
   }
-})
+)

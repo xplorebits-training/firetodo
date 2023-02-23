@@ -4,7 +4,7 @@ import App from './App.vue'
 import './index.css'
 
 import { initializeApp } from 'firebase/app';
-import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 import './assets/main.css'
 
@@ -23,7 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Initialize Cloud Storage and get a reference to the service
-const storage = getStorage(app);
-
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 createApp(App).use(createPinia()).mount('#app')
