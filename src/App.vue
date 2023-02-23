@@ -70,7 +70,7 @@ import { useUser } from '../stores/user'
 
 const firstName = ref("");
 const lastName = ref("");
-const email = ref();
+const email = ref("");
 const newPassword = ref("");
 const retypeNewPassword = ref("");
 
@@ -83,6 +83,6 @@ const onSubmit = function () {
   }
   useUser().signup(firstName.value , lastName.value , email.value , newPassword.value )
   .then(() => alert("Sign up successful!"))
-  .catch((error) => alert(error))
+  .catch((error) => alert("something went wrong :<"))
 }
 </script>
