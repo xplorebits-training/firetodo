@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center border-slate-300 border rounded-lg p-5 ">
+  <div class="flex items-center border-slate-300 bg-white border rounded-lg p-5 ">
     <form class="space-y-6" @submit.prevent="onSubmit">
       <div class="text-left text-2xl font-semibold">Create your Account</div>
       <div class="grid grid-cols-12 gap-3">
@@ -64,25 +64,30 @@
   </div>
 </template>
 
+<style>
+body{
+  background-color: white;
+}
+</style>
+
 <script setup>
 import { ref } from 'vue';
 import { useUser } from '../stores/user'
 
 const firstName = ref("");
 const lastName = ref("");
-const email = ref("");
+const email = ref();
 const newPassword = ref("");
 const retypeNewPassword = ref("");
 
 
 const onSubmit = function () {
-
   if (newPassword.value !== retypeNewPassword.value) {
     alert("passwords do not match.");
     return;
   }
   useUser().signup(firstName.value , lastName.value , email.value , newPassword.value )
-  .then(() => alert("Sign up successful!"))
+  .then(() =>alert("Signup successful !" ) )
   .catch((error) => alert("something went wrong :<"))
 }
 </script>

@@ -10,5 +10,4 @@ export default async function(firstName,lastName,useremail,userpassword){
     lastName,
     email : useremail
   });
-  console.log("done")
 };

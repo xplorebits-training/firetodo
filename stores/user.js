@@ -8,7 +8,8 @@ export const useUser = defineStore('User',{
   actions:{
     signup,
     updateLocalProfile (firstName,lastName,useremail){
-      useUser.profile = { ...this.profile , firstName : firstName , lastName : lastName , email : useremail}
+      useUser.profile = { ...this.profile , firstName : firstName , lastName : lastName , email : useremail};
+      console.log(useUser.profile)
     },
    }
   }
